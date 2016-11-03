@@ -1,0 +1,54 @@
+
+<%- model_class = Song -%>
+
+  <%= render 'shared/page_header',
+    flash: flash,
+    title: '    Search For Songs, Artists and Albums',
+    description: "This page will show you a complete listing of
+      songs, artists, and albums based on your search criteria."
+  %>
+
+<div d="song-form" style="display:none;"></div>
+
+<%= form_tag root_path, :remote => true, :class => 'listing', method: :get do %>
+     <div class="Format-Header">
+       <form>
+        <div class="form-group">
+    	   <label class="control-label col-md-8">Song</label>
+	        <div class="col-md-12" id="fieldspace">
+           <%= text_field_tag :song, params[:song] %>
+          </div>
+        </div>
+
+
+      	<div class="form-group">
+      	  <label class="control-label col-md-8">Album</label>
+	        <div class="col-md-12" id="fieldspace">
+           <%= text_field_tag :album, params[:album] %>
+          </div>
+        </div>
+
+        <div class="form-group">
+	       <label class="control-label col-md-8">Artist</label>
+	       <div class="col-md-12" id="fieldspace">
+          <%= text_field_tag :artist, params[:artist] %>
+        </div>
+       </div>
+
+   <div class="row row-grid">
+    <div class="form-actions" id="alignbutton">
+      <button type="submit" class="btn btn-primary">Search</button>
+      <%= link_to '<button type="button" class="btn btn-primary">Clear Search</button>'.html_safe, root_path %>
+    </div>
+  </div>
+</form>
+</div>
+
+
+<!-- This div will initiate AJAX which will refresh the page without changing the URL -->
+
+  <div id="listing">
+</div>
+
+
+<% end %>

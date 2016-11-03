@@ -1,0 +1,46 @@
+<!-- This file will display the results of the search for songs, artists, and  -->
+<!-- albums -->
+
+<div d="song-form" style="display:none;"></div>
+
+<p id="notice"><%= notice %></p>
+
+<br>
+<br>
+<br>
+
+<div class='Format-Header'>
+<div class='row'>
+   <div class="col-xs-12">
+
+  <!-- Determine if a list exist to display -->
+
+    <% if @song_list.present? %>
+       <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Album</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @song_list.each do |song| %>
+            <tr>
+              <td><%= song.song_name %></td>
+              <td><%= song.artist.artist_name %></td>
+              <td><%= song.album.album_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+     <div class='Format-Header'>
+      <p>
+       No songs matched your search criteria. Please modify your search criteria and try again.
+      </p>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>

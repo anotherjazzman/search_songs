@@ -1,0 +1,59 @@
+= Search For Music
+
+The Search For Music project is a SaaS project which provides a way to search for
+music by either song, artist or album.
+
+= Components
+
+The project is based on the following technology components:
+
+* Ruby On Rails 4.2.6
+* Ruby 2.3.1
+* Bootstrap 4
+* AJAX
+* Rspec testing
+* SQLite
+
+= Design Considerations
+
+Separate models were created for song, artist, and albums and their associated
+relationships. The focus was to ensure that when searching for either a song,
+artist, or album, that all three pieces of information would be displayed. So,
+the heart of the implementation focused only on the relationship between song and
+artist/album. The creation of the separate models provide the flexibility in
+the future to focus on the artist to album relationship.
+
+Also, there was an attempt to use Polymer element catalog (primarily for AJAX but,
+time constraints did not permit it to be implemented in this version. Standard
+technique for AJAX was used.
+
+= Configuration
+
+To get this web-based application framework configured run the following:
+
+  bundle install
+
+= Database Creation
+
+  rake db:migrate
+
+= Database initialization
+
+Execute the seed file to populate the database with initial songs, artists and 
+albums. 
+
+  rake db:seed
+
+= Start the application
+
+   rails s
+
+1) Go to your browser and put n the url 'localhost:3000' to bring up the search page
+
+2) Enter any combination of song, artist and album (from the seeds.rb file) 
+and hit the 'Search' button and hit the 'Clear Search' button to clear 
+away the results and start over.
+
+= How to run the test suite
+
+  bundle exec rspec

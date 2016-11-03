@@ -1,0 +1,35 @@
+<%= form_for(@song, remote: true) do |f| %>
+  <% if @song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h2>
+
+      <ul>
+      <% @song.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Song' %><br>
+    <%= f.text_field :song_name %>
+  </div>
+  <%= f.fields_for :artist do |builder| %>
+
+  <div class="field">
+    <%= builder.label 'Artist' %><br />
+    <%= builder.text_field :artist_name %>
+  </div>
+<% end -%>
+<%= f.fields_for :album do |builder| %>
+
+  <div class="field">
+    <%= builder.label 'Album' %><br />
+    <%= builder.text_field :album_name %>
+  </div>
+<% end -%>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
